@@ -16,7 +16,15 @@ class GalleriesController < ApplicationController
     @cat = @gallery.cat
     @pics = @gallery.pics.page params[:page]
     @pic = @pics.first
+
     @total_count = @gallery.pics.count
+    
+    if @page < @total_count
+      @next_pic = @gallery.pics[@page]
+    else
+      @next_pic = @gallery.pics[0]
+    end
+    
   end
 
   # GET /galleries/new

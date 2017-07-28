@@ -10,6 +10,37 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+    <%if not @cat%>
+        <div class="menu">
+            <%=link_to "美女图库","/",:class=>"cur"%>
+            <%Cat.all.each do |cat|%>
+                <%=link_to cat.name,cat_path(cat.token) %>
+            <%end%>
+        </div>
+    <%else%>
+        <div class="menu">
+            <%=link_to "美女图库","/"%>
+            <%Cat.all.each do |cat|%>
+                <%if cat == @cat%>
+                    <%=link_to cat.name,cat_path(cat.token),:class=>"cur" %>
+                <%else%>
+                    <%=link_to cat.name,cat_path(cat.token) %>
+                <%end%>
+            <%end%>
+        </div>
+    <%end%>
+    
+<div class="ad_top">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- header -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-4598677338433468"
+     data-ad-slot="7792082895"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
 
 <%= yield %>
 <!-- <div class="friend">--友情链接--<br />

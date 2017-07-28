@@ -1,13 +1,3 @@
-<div class="menu">
-    <%=link_to "美女图库","/"%>
-    <%Cat.all.each do |cat|%>
-        <%if cat == @cat%>
-            <%=link_to cat.name,cat_path(cat.token),:class=>"cur" %>
-        <%else%>
-            <%=link_to cat.name,cat_path(cat.token) %>
-        <%end%>
-    <%end%>
-</div>
 <div class="image">
      <div class="image_left">
          <div class="disp2">

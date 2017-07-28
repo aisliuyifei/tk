@@ -1,10 +1,3 @@
-<div class="menu">
-    <%=link_to "美女图库","/",:class=>"cur"%>
-    <%Cat.all.each do |cat|%>
-        <%=link_to cat.name,cat_path(cat.token) %>
-    <%end%>
-</div>
-
 <%Cat.all.each do |cat|%>
     <div class="disp1">
         <div class="disp1_<%=cat.id-1%>">

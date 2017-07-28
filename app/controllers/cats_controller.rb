@@ -11,6 +11,7 @@ class CatsController < ApplicationController
   # GET /cats/1.json
   def show
     @cat = Cat.find_by_token(params[:id])
+    @page_title = @cat.name
     @galleries = @cat.galleries.page params[:page]
     @total_count = @cat.galleries.count
     @pages =  @cat.galleries.page(20).total_pages

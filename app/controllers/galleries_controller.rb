@@ -12,6 +12,7 @@ class GalleriesController < ApplicationController
   def show
     @page = (params[:page] || 1).to_i
     @gallery = Gallery.find_by_token(params[:id])
+    @page_title = @gallery.name
     @cat = @gallery.cat
     @pics = @gallery.pics.page params[:page]
     @pic = @pics.first

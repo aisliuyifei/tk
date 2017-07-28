@@ -3,9 +3,9 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link href="/css/mycss.css" rel="stylesheet" type="text/css" />
-  <title>美女图库 美女图片 美女套图</title>    
-  <meta name="keywords" content="美女图库 美女图片 美女套图" />
-  <meta name="description" content="宅男福利网 美女频道 美女图库 美女图片 美女套图"
+  <title>><%= @page_title ? "#{@page_title.to_s} - 宅男福利社" :  '美女图库 美女图片 美女套图 - 宅男福利社'%></title>    
+  <meta name="keywords" content="<%= @page_title ? "#{@page_title.to_s} - 宅男福利社" :  '美女图库 美女图片 美女套图 - 宅男福利社'%>" />
+  <meta name="description" content="<%= @page_title ? "#{@page_title.to_s} - 宅男福利社" :  '美女图库 美女图片 美女套图 - 宅男福利社'%>"
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <%= csrf_meta_tags %>
 </head>

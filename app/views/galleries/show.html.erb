@@ -1,0 +1,43 @@
+<div class="menu">
+    <%=link_to "美女图库","/"%>
+    <%Cat.all.each do |cat|%>
+        <%if cat == @cat%>
+            <%=link_to cat.name,cat_path(cat.token),:class=>"cur" %>
+        <%else%>
+            <%=link_to cat.name,cat_path(cat.token) %>
+        <%end%>
+    <%end%>
+</div>
+
+<div class="title">
+    <h1><span id="Labeltitle" style="color:DodgerBlue;font-size:18px;font-weight:bold;"><%=@gallery.name%> 第<%=@pic.code%>张图片</span>
+    </h1>
+</div>
+
+<div style=" margin:0 auto; height:30px; width:988px"></div>
+    <div class="disp_img3">
+        <table align="center">
+            <tr>
+                <td align="center">
+                    <%if @page < @total_count%>
+                        <a id="HyperLink4" class="cursor" href="<%=gallery_path(id:@gallery.token,page:@page+1)%>"><img id="Image1" class="shadow" src="<%=@pic.oss_url%>" alt="<%=@gallery.name%> 第<%=@pic.code%>张图片" style="border-color:#666666;border-width:1px;border-style:Solid;width:900px;" /></a></td>
+                    <%else%>
+                        <img id="Image1" class="shadow" src="<%=@pic.oss_url%>" alt="<%=@gallery.name%> 第<%=@pic.code%>张图片" style="border-color:#666666;border-width:1px;border-style:Solid;width:900px;" />
+                    <%end%>
+            </tr>
+        </table></div> 
+        <div class="bottom_nav">
+            <table id="DataList1" cellspacing="0" align="Center" border="0" style="border-collapse:collapse;">
+            	<tr>
+                    <%page=0%>
+                    <%@gallery.pics.each do |pic|%>
+                        <%page+=1%>
+                		<td>
+                            <a href='<%=gallery_path(id:@gallery.token,page:page)%>' ><%=page%></a>
+                        </td>
+                    <%end%>
+            	</tr>
+            </table>
+        </div>
+    </div>
+</div>

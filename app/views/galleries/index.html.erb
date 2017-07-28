@@ -1,0 +1,30 @@
+<div class="menu">
+    <%=link_to "美女图库","/",:class=>"cur"%>
+    <%Cat.all.each do |cat|%>
+        <%=link_to cat.name,cat_path(cat.token) %>
+    <%end%>
+</div>
+
+<%Cat.all.each do |cat|%>
+    <div class="disp1">
+        <div class="disp1_<%=cat.id-1%>">
+            <div class="menu_left"></div>
+            <div class="menu_right"><a href="<%=cat_path(cat.token)%>">更多&gt;&gt;</a></div>
+        </div>
+    <div>
+    <table id="DataList<%=cat.id-1%>" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;">
+        <tr>
+        
+        <%cat.random_galleries(6).each do |gallery| %>
+            	<td align="center" valign="top" style="width:158px;">
+                    <div class="disp_img">
+                      <a id="<%=gallery.token%>" href="<%=gallery_path(gallery.token)%>" target="_blank"><img id="img<%=gallery.token%>" src="<%=gallery.oss_url%>" alt="<%=gallery.name%>" style="height:190px;width:130px;border-width:0px;" /></a>
+                    </div>
+                    <a id="link<%=gallery.token%>" class="link" href="<%=gallery_path(gallery.token)%>" target="_blank"><span id="label<%=gallery.token%>"><%=gallery.name%> <%=gallery.pics.count%>P</span></a>
+                </td>
+        <%end%>
+        </tr>
+        
+    </table>
+    </div>
+<%end%>

@@ -1,0 +1,53 @@
+<div class="menu">
+    <%=link_to "美女图库","/"%>
+    <%Cat.all.each do |cat|%>
+        <%if cat == @cat%>
+            <%=link_to cat.name,cat_path(cat.token),:class=>"cur" %>
+        <%else%>
+            <%=link_to cat.name,cat_path(cat.token) %>
+        <%end%>
+    <%end%>
+</div>
+<div class="image">
+     <div class="image_left">
+         <div class="disp2">
+             <div class="disp2_<%=@cat.id-1%>"></div>
+                <div class="datalist">
+                    <table id="DataList1" cellspacing="0" border="0" style="width:800px;border-collapse:collapse;">
+                        <tr>
+                        <%i=0%>
+
+                        <%@galleries.each do |g|%>
+                            <%if i%5==0 &&i!=0%>
+                                </tr><tr>
+                            <%end%>
+	                        <td align="center" valign="top" style="width:158px;">
+                                <div class="disp_img">
+                                    <a id="link<%=g.token%>" href="<%=gallery_path(g.token)%>" target="_blank">
+                                        <img id="img<%=g.token%>" src="<%=g.oss_url%>" alt="<%=g.name%>" style="height:190px;width:130px;border-width:0px;" />
+                                    </a>
+                                </div>
+                            </td>
+                            <%i+=1%>
+                            
+                        <%end%>
+                        </tr>
+               
+                    </table>
+                </div>
+                <div class="fenye">
+                    
+                    <div id="AspNetPager1" class="pages" style="width:100%;white-space:nowrap;">
+                        <div class="pages" style="width:30%;float:left;">
+                        	共<%=@total_count%>条，共<%=@pages%>页，20条/每页
+                        </div>
+                        <%= paginate @galleries %>
+                        <div style="clear:both"></div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
